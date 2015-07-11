@@ -1,0 +1,9 @@
+<h1>Authenticate as one of the following users</h1>
+
+<p>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to user.name, session_url(user_id: user.id), method: :post %></li>
+    <% end %>
+  </ul>
+</p>
