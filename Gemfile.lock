@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/rails/actioncable.git
-  revision: cbc73069788abc62fca5cf33ae5a0a4f63937fb1
+  revision: 849278dae77cb3f10823ccd9a0fdc1181380ce17
   specs:
     actioncable (0.1.0)
       activesupport (>= 4.2.0)
