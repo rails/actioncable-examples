@@ -16,6 +16,8 @@ gem 'turbolinks'
 
 gem 'jbuilder', '~> 2.0'
 
+gem 'os', '~> 0.9.6'
+
 group :development, :test do
   gem 'byebug'
 end
