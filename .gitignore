@@ -16,3 +16,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+/vendor/bundle
+/.bash_history

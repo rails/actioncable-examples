@@ -19,6 +19,9 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+  # Log to STDOUT if the environment variable is present (i.e. Docker Compose example)
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT)) if ENV['RAILS_LOG_TO_STDOUT']
+
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 

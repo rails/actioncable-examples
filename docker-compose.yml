@@ -1,0 +1,38 @@
+---
+# The Redis Container:
+redis:
+  image: redis:3.0
+  ports:
+    - "6379:6379" # Bind host port 6379 to Redis container's port 6379
+
+# The Web container:
+web: &app_base
+  image: vovimayhem/app-dev:mri-2.2
+  command: rails server -p 3000 -b 0.0.0.0
+  ports:
+    - "3000:3000" # Bind host port 3000 to app container's HTTP port 3000
+  volumes:
+    - .:/app
+  ##############################################################################
+  # With linked containers, Docker writes entries to the container's /etc/hosts.
+  # We'll try here naming the entries docker will insert into the
+  # container's /etc/hosts, so we can use more familiar URL's for our app - See
+  # this container's environment section below:
+  links: &app_links
+    - redis:redis.example.com
+  environment: &app_environment
+
+    # The Redis URL:
+    REDIS_URL: redis://redis.example.com:6379
+
+    RAILS_LOG_TO_STDOUT: true
+
+    # Run the app in the 'development' environment:
+    RACK_ENV: development
+    RAILS_ENV: development
+
+cable:
+  <<: *app_base
+  command: cable
+  ports:
+    - "28080:28080" # Bind host port 28080 to app container's WebSocket port 28080
