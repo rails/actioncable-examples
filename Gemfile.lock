@@ -1,10 +1,12 @@
 GIT
   remote: git://github.com/rails/actioncable.git
-  revision: 849278dae77cb3f10823ccd9a0fdc1181380ce17
+  revision: 6ee8bb9310f78de85e6b89c8cac33493b0582383
   specs:
     actioncable (0.1.0)
+      actionpack (>= 4.2.0)
       activesupport (>= 4.2.0)
       celluloid (~> 0.16.0)
+      coffee-rails
       em-hiredis (~> 0.3.0)
       faye-websocket (~> 0.9.2)
       redis (~> 3.0)
