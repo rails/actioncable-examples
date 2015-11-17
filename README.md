@@ -21,9 +21,10 @@ You must have redis installed and running on the default port:6379 (or configure
 
 ## Starting the servers
 
+0. Check `config/puma.rb`
 1. Run `./bin/setup`
 2. Run `./bin/cable`
-3. Open up a separate terminal and run: `./bin/rails server`
+3. Open up a separate terminal and run: `./bin/rails server` (if you want to use config/puma.rb, please run `bundle exec puma`)
 4. One more terminal to run redis server: `redis-server`
 4. Visit `http://localhost:3000`
 
