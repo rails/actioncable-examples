@@ -1,14 +1,8 @@
-# production: &production
-#   :url: redis://localhost:6379
-#   :host: localhost
-#   :port: 6379
-#   :timeout: 1
+# production:
+#   url: redis://redis.example.com:6379
 
 local: &local
-  :url: redis://localhost:6379
-  :host: localhost
-  :port: 6379
-  :timeout: 1
-  :inline: true
+  url: redis://localhost:6379
+
 development: *local
 test: *local

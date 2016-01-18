@@ -1,6 +1,6 @@
-#= require cable
+#= require action_cable
 #= require_self
 #= require_tree .
 
 @App = {}
-App.cable = Cable.createConsumer 'ws://localhost:28080'
+App.cable = ActionCable.createConsumer()
