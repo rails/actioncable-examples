@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: "rails/rails"
+gem 'rails', '5.0.0.beta2'
 gem 'sprockets-rails', github: "rails/sprockets-rails"
-gem 'arel', github: "rails/arel"
 
 gem 'sqlite3'
+gem 'redis'
 gem 'puma'
 
 gem 'sass-rails', '~> 5.0'
