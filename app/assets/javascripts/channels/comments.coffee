@@ -1,7 +1,8 @@
 App.comments = App.cable.subscriptions.create "CommentsChannel",
   # Called when the subscription is ready for use on the server
   connected: ->
-    # FIXME: While we wait for cable subscriptions to always be finalized before sending messages
+    # FIXME: While we wait for cable subscriptions to always be finalized
+    #        before sending messages
     setTimeout =>
       @followCurrentMessage()
       @installPageChangeCallback()
