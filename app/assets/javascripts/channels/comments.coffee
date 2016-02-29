@@ -1,8 +1,7 @@
 App.comments = App.cable.subscriptions.create "CommentsChannel",
   # Called when the subscription is ready for use on the server
   connected: ->
-    # FIXME: While we wait for cable subscriptions to always be finalized
-    #        before sending messages
+    # FIXME: While we wait for cable subscriptions to always be finalized before sending messages
     setTimeout =>
       @followCurrentMessage()
       @installPageChangeCallback()
@@ -18,10 +17,10 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
 
   # When data is received from the server itself
   received: (data) ->
-    @_commentsDiv().append(data.comment) unless @_userIsCurrentUser(data.comment)
+    @commentsDiv().append(data.comment) unless @userIsCurrentUser(data.comment)
 
   followCurrentMessage: ->
-    if messageId = @_commentsDiv().data('message-id')
+    if messageId = @commentsDiv().data('message-id')
       # corresponds to CommentsChannel#follow
       @perform 'follow', message_id: messageId
     else
@@ -35,7 +34,7 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
 
   # Helpers
 
-  _userIsCurrentUser: (comment) ->
+  userIsCurrentUser: (comment) ->
     $(comment).attr('data-user-id') is $('meta[name=current-user]').attr('id')
 
-  _commentsDiv: -> $("[data-channel='comments']")
+  commentsDiv: -> $("[data-channel='comments']")
