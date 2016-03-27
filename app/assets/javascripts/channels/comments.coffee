@@ -23,4 +23,4 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
   installPageChangeCallback: ->
     unless @installedPageChangeCallback
       @installedPageChangeCallback = true
-      $(document).on 'page:change', -> App.comments.followCurrentMessage()
+      $(document).on 'turbolinks:load', -> App.comments.followCurrentMessage()
