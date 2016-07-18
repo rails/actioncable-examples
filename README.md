@@ -33,3 +33,5 @@ You must have redis installed and running on the default port:6379 (or configure
 2. Login as different people in each browser. 
 3. Go to the same message.
 4. Add comments in either browser and see them appear real-time on the counterpart screen.
+
+![Live comments example](/example.gif?raw=true "Live comments example")
