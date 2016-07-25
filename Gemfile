@@ -1,19 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta3'
-gem 'sprockets-rails', github: "rails/sprockets-rails"
+gem 'rails'
+gem 'sprockets-rails'
 
 gem 'sqlite3'
 gem 'redis'
 gem 'puma'
 
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', github: "rails/coffee-rails"
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'turbolinks', github: "rails/turbolinks"
+gem 'turbolinks'
+gem 'spring-commands-rspec'
 
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'byebug'
@@ -22,4 +23,21 @@ end
 group :development do
   gem 'web-console', github: 'rails/web-console'
   gem 'spring'
+end
+
+group :development do
+  # Guard
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+end
+
+group :development, :test do
+  # Debugger
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-remote'
+
+  # Coding style
+  gem 'rubocop', require: false
 end
