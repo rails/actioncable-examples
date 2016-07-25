@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :messages
-  has_many :comments
+  has_many :rooms
 end
