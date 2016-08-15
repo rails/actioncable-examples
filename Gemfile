@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta3'
-gem 'sprockets-rails', github: "rails/sprockets-rails"
+gem 'rails', '~> 5.0.0'
 
 gem 'sqlite3'
 gem 'redis'
@@ -9,9 +8,9 @@ gem 'puma'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', github: "rails/coffee-rails"
+gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'turbolinks', github: "rails/turbolinks"
+gem 'turbolinks', '~> 5'
 
 gem 'jbuilder', '~> 2.0'
 
@@ -20,6 +19,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', github: 'rails/web-console'
+  gem 'web-console'
   gem 'spring'
 end
