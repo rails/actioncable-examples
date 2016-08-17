@@ -1,6 +1,5 @@
 App.comments = App.cable.subscriptions.create "CommentsChannel",
-  collection: -> $("[data-channel='comments']")
-
+  # Called when the subscription is ready for use on the server
   connected: ->
     # FIXME: While we wait for cable subscriptions to always be finalized before sending messages
     setTimeout =>
@@ -8,19 +7,34 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
       @installPageChangeCallback()
     , 1000
 
-  received: (data) ->
-    @collection().append(data.comment) unless @userIsCurrentUser(data.comment)
+  # Called when the WebSocket connection is closed
+  disconnected: ->
+    # TODO hide messages
 
-  userIsCurrentUser: (comment) ->
-    $(comment).attr('data-user-id') is $('meta[name=current-user]').attr('id')
+  # Called when the subscription is rejected by the server
+  rejected: ->
+    # TODO hide messages
+
+  # When data is received from the server itself
+  received: (data) ->
+    @commentsDiv().append(data.comment) unless @userIsCurrentUser(data.comment)
 
   followCurrentMessage: ->
-    if messageId = @collection().data('message-id')
+    if messageId = @commentsDiv().data('message-id')
+      # corresponds to CommentsChannel#follow
       @perform 'follow', message_id: messageId
     else
+      # corresponds to CommentsChannel#unfollow
       @perform 'unfollow'
 
   installPageChangeCallback: ->
     unless @installedPageChangeCallback
       @installedPageChangeCallback = true
       $(document).on 'page:change', -> App.comments.followCurrentMessage()
+
+  # Helpers
+
+  userIsCurrentUser: (comment) ->
+    $(comment).attr('data-user-id') is $('meta[name=current-user]').attr('id')
+
+  commentsDiv: -> $("[data-channel='comments']")
