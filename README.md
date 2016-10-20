@@ -35,3 +35,7 @@ You must have redis installed and running on the default port:6379 (or configure
 4. Add comments in either browser and see them appear real-time on the counterpart screen.
 
 ![Live comments example](/example.gif?raw=true "Live comments example")
+
+## Articles
+
+Here is a great article on implementing ActionCable: [Real-Time Rails: Implementing WebSockets in Rails 5 with Action Cable](https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable)
