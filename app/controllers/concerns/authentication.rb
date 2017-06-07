@@ -1,6 +1,6 @@
 module Authentication
   extend ActiveSupport::Concern
-  
+
   included do
     before_action :ensure_authenticated_user
   end
