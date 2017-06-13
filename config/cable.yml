@@ -1,8 +1,10 @@
-# production:
-#   url: redis://redis.example.com:6379
+development:
+  adapter: async
 
-local: &local
-  url: redis://localhost:6379
+test:
+  adapter: async
 
-development: *local
-test: *local
+production:
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: actioncable-examples_production
