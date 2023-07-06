@@ -1,24 +1,14 @@
-# README
+# Action Cable Examples
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A collection of examples showcasing the capabilities of Action Cable.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+You must have redis installed and running on the default port (or configure it in config/redis/cable.yml).
 
-* System dependencies
+## Starting the servers
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Run ./bin/setup
+2. Run ./bin/cable
+3. Run ./bin/rails server
+4. Visit http://localhost:3000
