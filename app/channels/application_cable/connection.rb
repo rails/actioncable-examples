@@ -8,6 +8,7 @@ module ApplicationCable
     end
 
     def disconnect
+      # Any cleanup needed when the connection is terminated
     end
 
     protected
