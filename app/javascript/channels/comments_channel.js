@@ -9,7 +9,7 @@ consumer.subscriptions.create("CommentsChannel", {
     // FIXME: While we wait for cable subscriptions to always be finalized before sending messages
     return setTimeout(() => {
       this.followCurrentMessage();
-    }, 500);
+    }, 1000);
   },
 
   disconnected() {

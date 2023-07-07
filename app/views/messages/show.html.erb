@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "channels/comments_channel" %>
+<% end %>
+
 <h1><%= @message.title %></h1>
 
 <p><%= @message.content %></p>

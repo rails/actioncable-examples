@@ -7,13 +7,12 @@ module ApplicationCable
       logger.add_tags 'ActionCable', current_user.name
     end
 
+    def disconnect
+    end
+
     protected
       def find_verified_user
-        if verified_user = User.find_by(id: cookies.encrypted[:user_id])
-          verified_user
-        else
-          reject_unauthorized_connection
-        end
+        User.find_by(id: cookies.encrypted[:user_id]) || reject_unauthorized_connection
       end
   end
 end

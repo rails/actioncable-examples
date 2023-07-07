@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= yield(:head) %>
+
     <meta name="current-user" id="<%= @current_user.try(:id) %>">
   </head>
 
