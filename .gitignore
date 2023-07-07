@@ -16,4 +16,3 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-*.swp
