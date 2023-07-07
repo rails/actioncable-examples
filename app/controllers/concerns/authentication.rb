@@ -18,6 +18,7 @@ module Authentication
     end
 
     def unauthenticate_user
+      ActionCable.server.disconnect(current_user: @current_user)
       @current_user = nil
       cookies.delete(:user_id)
     end
