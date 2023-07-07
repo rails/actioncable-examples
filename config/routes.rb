@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     resource  :session
     resources :examples
 
-    root "examples#index"
+    resources :messages do
+      resources :comments
+    end
+
+    root 'examples#index'
   end
 end
