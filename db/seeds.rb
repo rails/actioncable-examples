@@ -7,3 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.create! name: 'Funkmaster Flex'
+User.create! name: 'The Notorious B.I.G.'
+User.create! name: 'Snoop Dogg'
+User.create! name: 'Ice Cube'
