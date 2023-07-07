@@ -2,7 +2,11 @@ class CommentsController < ApplicationController
   before_action :set_message
 
   def create
-    @comment = Comment.create!(content: params[:comment][:content], message: @message, user: @current_user)
+    @comment = @message.comments.new(content: params[:content], user: @current_user)
+
+    if @comment.save
+      redirect_to message_path(@message)
+    end
   end
 
   private

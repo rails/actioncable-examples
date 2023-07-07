@@ -4,7 +4,6 @@
   Hello <%= @current_user.name %>! <%= button_to 'Logout', session_path, method: :delete %>
 </p>
 
-<p>
-  <ul>
-    <li><%= link_to 'Messages with live comments', messages_path %></li>
-</p>
+<ul>
+  <li><%= link_to 'Messages with live comments', messages_path %></li>
+</ul>
