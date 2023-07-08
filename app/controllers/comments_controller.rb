@@ -5,7 +5,10 @@ class CommentsController < ApplicationController
     @comment = @message.comments.new(content: params[:content], user: @current_user)
 
     if @comment.save
-      redirect_to message_path(@message)
+      respond_to do |format|
+        format.turbo_stream { render partial: 'comments/comments', locals: { message: @message }, status: :created }
+        format.html { redirect_to messages_path(@message) }
+      end
     end
   end
 

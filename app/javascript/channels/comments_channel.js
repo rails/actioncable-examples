@@ -1,38 +1,15 @@
 import consumer from 'channels/consumer';
 
-consumer.subscriptions.create('CommentsChannel', {
+const comments = document.querySelector('[data-channel="comments"]');
+const messageId = comments.dataset.messageId;
+
+consumer.subscriptions.create({ channel: 'CommentsChannel', message_id: messageId }, {
   appendComment(comment) {
-    this.comments().innerHTML += comment; 
-  },
-
-  comments() { 
-    return document.querySelector('[data-channel="comments"]');
-  },
-
-  connected() {
-    this.follow();
-  },
-
-  disconnected() {
-    this.unfollow();
-  },
-
-  follow() {
-    let messageId;
-
-    if (messageId = this.comments().dataset.messageId) {
-      return this.perform('follow', { message_id: messageId });
-    }
+    comments.insertAdjacentHTML('beforeend', comment); 
   },
 
   received(data) {
-    if (!this.userIsCurrentUser(data.user_id)) { 
-      this.appendComment(data.comment); 
-    }
-  },
-
-  unfollow() {
-    return this.perform('unfollow');
+    this.appendComment(data.comment); 
   },
 
   userIsCurrentUser(userId) {
