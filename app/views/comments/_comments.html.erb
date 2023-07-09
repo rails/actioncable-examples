@@ -1,7 +1,9 @@
-<%= turbo_frame_tag "comments" do %>
-  <section id="comments" data-channel="comments" data-message-id="<%= message.id %>">
+<section id="comments" data-message-id="<%= message.id %>">
+  <%= turbo_frame_tag "#{dom_id(@message)}/comments", data: { channel: 'comments' } do %>
     <%= render message.comments %>
-  </section>
-  
+  <% end %>
+</section>
+
+<%= turbo_frame_tag "#{dom_id(@message)}/new_comment" do %>
   <%= render 'comments/new', message: message %>
 <% end %>

@@ -6,8 +6,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.turbo_stream { render partial: 'comments/comments', locals: { message: @message }, status: :created }
-        format.html { redirect_to messages_path(@message) }
+        format.turbo_stream
       end
     end
   end

@@ -1,0 +1,5 @@
+<%= turbo_stream.append "#{dom_id(@message)}/comments", @comment %>
+
+<%= turbo_stream.update "#{dom_id(@message)}/new_comment" do %>
+  <%= render 'comments/new', message: @message %>
+<% end %>
