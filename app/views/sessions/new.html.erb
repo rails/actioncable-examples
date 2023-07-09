@@ -2,6 +2,6 @@
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= button_to user.name, session_url(user_id: user.id) %></li>
+    <li><%= button_to user.name, session_path(user_id: user.id) %></li>
   <% end %>
 </ul>
