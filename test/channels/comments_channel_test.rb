@@ -5,25 +5,26 @@ class CommentsChannelTest < ActionCable::Channel::TestCase
     @message = messages(:tha_shiznit)
   end
 
-  test "follow" do
-    subscribe(@message)
+  test "subscribed" do
+    subscribe({ message_id: @message.id })
 
     assert_has_stream "messages:#{@message.id}:comments"
   end
 
-  test "unfollow" do
-    subscribe(@message)
-    unsubscribe(@message)
+  test "unsubscribed" do
+    subscribe({ message_id: @message.id })
+
+    stub_pubsub(subscription)
+
+    unsubscribe
 
     assert_no_streams
   end
 
-  test "subscribes and stream for current user" do
-    user = users(:dogg)
-    stub_connection current_user: user
-
-    subscribe(@message)
-
-    assert_has_stream_for user
-  end
+  private
+    def stub_pubsub(subscription)
+      subscription
+        .connection
+        .define_singleton_method(:pubsub) { ActionCable.server.pubsub }
+    end
 end
